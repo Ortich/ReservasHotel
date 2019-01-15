@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace ReservasHotel
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
-        public Form1()
+        public FormLogin()
         {
             InitializeComponent();
+        }
+
+        private void buttonLogin_Click(object sender,EventArgs e)
+        {
+            this.Hide();
+            FormVentananPrincipal ventanaPrincipal = new FormVentananPrincipal();
+            ventanaPrincipal.Show();
         }
     }
 }
