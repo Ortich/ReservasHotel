@@ -24,5 +24,17 @@ namespace ReservasHotel
             if(e.CloseReason == CloseReason.WindowsShutDown) return;
             Application.Exit();
         }
+
+        private void button3_Click(object sender,EventArgs e)
+        {
+            FormNuevaReserva nuevaReserva = new FormNuevaReserva();
+            nuevaReserva.Show();
+        }
+
+        private void button4_Click(object sender,EventArgs e)
+        {
+            FormBuscarReserva buscarReserva = new FormBuscarReserva();
+            buscarReserva.Show();
+        }
     }
 }

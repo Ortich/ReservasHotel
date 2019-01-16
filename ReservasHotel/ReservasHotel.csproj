@@ -60,6 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBBDD.cs" />
+    <Compile Include="FormBuscarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBuscarReserva.Designer.cs">
+      <DependentUpon>FormBuscarReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNuevaReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNuevaReserva.Designer.cs">
+      <DependentUpon>FormNuevaReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVentananPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,8 +86,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBuscarReserva.resx">
+      <DependentUpon>FormBuscarReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNuevaReserva.resx">
+      <DependentUpon>FormNuevaReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVentananPrincipal.resx">
       <DependentUpon>FormVentananPrincipal.cs</DependentUpon>
