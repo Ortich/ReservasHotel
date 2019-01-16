@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.Odbc;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
@@ -99,6 +98,26 @@ namespace ReservasHotel
             catch(MySqlException ex)
             {
                 throw ex;
+            }
+        }
+
+        public int login(String usuario, String pass)
+        {
+            try
+            {
+                conexion.Open();
+                Console.WriteLine("Conexion Abierta -------------------------------------------");
+                MySqlCommand consulta = new MySqlCommand("SELECT count(*) FROM usuario WHERE nombre='" + usuario + "'AND pass='" + pass + "';", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable aux = new DataTable();
+                aux.Load(resultado);
+                conexion.Close();
+                Console.WriteLine("Conexion Cerrada -------------------------------------------");
+                return Convert.ToInt32(aux.Rows[0][0].ToString());
+            }
+            catch(MySqlException e)
+            {
+                throw e;
             }
         }
     }

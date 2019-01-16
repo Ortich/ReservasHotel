@@ -75,6 +75,7 @@
             // 
             this.textBoxPassLogin.Location = new System.Drawing.Point(79, 73);
             this.textBoxPassLogin.Name = "textBoxPassLogin";
+            this.textBoxPassLogin.PasswordChar = '♥';
             this.textBoxPassLogin.Size = new System.Drawing.Size(157, 20);
             this.textBoxPassLogin.TabIndex = 3;
             // 
