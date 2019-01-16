@@ -27,6 +27,7 @@ namespace ReservasHotel
             }
         }
 
+
         public DataTable geTitulos()
         {
             try

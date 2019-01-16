@@ -16,7 +16,6 @@ namespace ReservasHotel
         public FormVentananPrincipal()
         {
             InitializeComponent();
-
         }
         //Metodo para cerrar la aplicacion entera cuando se cierra este form
         protected override void OnFormClosing(FormClosingEventArgs e)

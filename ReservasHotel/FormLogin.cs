@@ -26,7 +26,16 @@ namespace ReservasHotel
             FormVentananPrincipal ventanaPrincipal = new FormVentananPrincipal();
             aux = conexion.login(textBoxusuarioLogin.Text, textBoxPassLogin.Text);
             //textBoxusuarioLogin.Text = aux.ToString();
-            ventanaPrincipal.Show();
+            if (aux == 1)
+            {
+                this.Hide();
+                ventanaPrincipal.Show();
+            }
+            else
+            {
+                Console.WriteLine("Usuario o contraseña incorrecto");
+                MessageBox.Show("Usuario o contraseña incorrecto", "Error");
+            }
         }
     }
 }
