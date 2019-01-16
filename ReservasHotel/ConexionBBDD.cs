@@ -28,13 +28,13 @@ namespace ReservasHotel
         }
 
 
-        public DataTable geTitulos()
+        public DataTable getReservas()
         {
             try
             {
                 conexion.Open();
                 Console.WriteLine("Conexion Abierta -------------------------------------------");
-                MySqlCommand consulta = new MySqlCommand("SELECT * FROM album",conexion);
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM reserva",conexion);
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 DataTable usuarios = new DataTable();
                 usuarios.Load(resultado);
@@ -48,53 +48,19 @@ namespace ReservasHotel
             }
         }
 
-        public DataTable getTituloPorNombre(String nombre)
+        public  DataTable getHabitaciones()
         {
             try
             {
                 conexion.Open();
                 Console.WriteLine("Conexion Abierta -------------------------------------------");
-                MySqlCommand consulta = new MySqlCommand("SELECT * FROM album WHERE titulo='" + nombre + "';",conexion);
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM habitaciones",conexion);
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 DataTable usuarios = new DataTable();
                 usuarios.Load(resultado);
                 conexion.Close();
                 Console.WriteLine("Conexion Cerrada -------------------------------------------");
                 return usuarios;
-            }
-            catch(MySqlException ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void actualizaAlbum(String titulo,String autor,String id)
-        {
-            try
-            {
-                conexion.Open();
-                Console.WriteLine("Conexion Abierta -------------------------------------------");
-                MySqlCommand consulta = new MySqlCommand("UPDATE album SET titulo='" + titulo + "', autor='" + autor + "' WHERE id='" + id + "'",conexion);
-                consulta.ExecuteNonQuery();
-                conexion.Close();
-                Console.WriteLine("Conexion Cerrada -------------------------------------------");
-            }
-            catch(MySqlException ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void annadeNuevoAlbum(String titulo,String autor)
-        {
-            try
-            {
-                conexion.Open();
-                Console.WriteLine("Conexion Abierta -------------------------------------------");
-                MySqlCommand consulta = new MySqlCommand("INSERT INTO album (titulo, autor) VALUES('" + titulo + "', '" + autor + "');",conexion);
-                consulta.ExecuteNonQuery();
-                conexion.Close();
-                Console.WriteLine("Conexion Cerrada -------------------------------------------");
             }
             catch(MySqlException ex)
             {

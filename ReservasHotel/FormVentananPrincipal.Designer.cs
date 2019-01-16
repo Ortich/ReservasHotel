@@ -40,6 +40,12 @@
             // 
             // dataGridViewCalendarioReservas
             // 
+            this.dataGridViewCalendarioReservas.AllowUserToAddRows = false;
+            this.dataGridViewCalendarioReservas.AllowUserToDeleteRows = false;
+            this.dataGridViewCalendarioReservas.AllowUserToOrderColumns = true;
+            this.dataGridViewCalendarioReservas.AllowUserToResizeColumns = false;
+            this.dataGridViewCalendarioReservas.AllowUserToResizeRows = false;
+            this.dataGridViewCalendarioReservas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewCalendarioReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCalendarioReservas.Location = new System.Drawing.Point(214, 51);
             this.dataGridViewCalendarioReservas.Name = "dataGridViewCalendarioReservas";
