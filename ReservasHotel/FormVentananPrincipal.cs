@@ -24,9 +24,10 @@ namespace ReservasHotel
 
             reservas = miConexion.getReservas();
             habitaciones = miConexion.getHabitaciones();
+
             int anno = fechaActual.Year;
             int mes = fechaActual.Month;
-           
+
             actualizaMes(System.DateTime.DaysInMonth(anno, mes));
             actualizaHabitaciones(habitaciones);
 
@@ -36,7 +37,7 @@ namespace ReservasHotel
 
         protected void actualizaMes(int dias)
         {
-            calendario.Columns.Add("Habitaciones", typeof(int));
+            calendario.Columns.Add("Habitaciones", typeof(int));//Carlos idea
             for(int i = 0; i<dias; i++)
             {
                 calendario.Columns.Add((i+1).ToString());
@@ -68,6 +69,11 @@ namespace ReservasHotel
         {
             FormBuscarReserva buscarReserva = new FormBuscarReserva();
             buscarReserva.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //label1.Text = "Mes "+ mes +" - Año "+ anno;
         }
     }
 }
