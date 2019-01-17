@@ -16,6 +16,7 @@ namespace ReservasHotel
         DataTable reservas = new DataTable();
         DataTable habitaciones = new DataTable();
         DataTable calendario = new DataTable();
+        DateTime fechaActual = DateTime.Today;
 
         public FormVentananPrincipal()
         {
@@ -23,16 +24,19 @@ namespace ReservasHotel
 
             reservas = miConexion.getReservas();
             habitaciones = miConexion.getHabitaciones();
+            int anno = fechaActual.Year;
+            int mes = fechaActual.Month;
            
-            actualizaMes(30);
+            actualizaMes(System.DateTime.DaysInMonth(anno, mes));
             actualizaHabitaciones(habitaciones);
 
             dataGridViewCalendarioReservas.DataSource = calendario;
-
+            label1.Text = "Mes" + mes + " - Año " + anno;
         }
 
         protected void actualizaMes(int dias)
         {
+            calendario.Columns.Add("Habitaciones", typeof(int));
             for(int i = 0; i<dias; i++)
             {
                 calendario.Columns.Add((i+1).ToString());
