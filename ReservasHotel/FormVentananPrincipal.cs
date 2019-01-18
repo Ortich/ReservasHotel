@@ -18,6 +18,8 @@ namespace ReservasHotel
         DataTable calendario = new DataTable();
         DateTime fechaActual = DateTime.Today;
 
+        int anno;
+        int mes;
         public FormVentananPrincipal()
         {
             InitializeComponent();
@@ -25,23 +27,75 @@ namespace ReservasHotel
             reservas = miConexion.getReservas();
             habitaciones = miConexion.getHabitaciones();
 
-            int anno = fechaActual.Year;
-            int mes = fechaActual.Month;
+            anno = fechaActual.Year;
+            mes = fechaActual.Month;
 
-            actualizaMes(System.DateTime.DaysInMonth(anno, mes));
+            calendario.Columns.Add("Habitaciones",typeof(int));//Carlos idea
+            actualizaDias(System.DateTime.DaysInMonth(anno,mes));
             actualizaHabitaciones(habitaciones);
+            labelMesAnno.Text = nombreMes(mes) + " - " + anno;
 
-            dataGridViewCalendarioReservas.DataSource = calendario;
-            label1.Text = "Mes" + mes + " - Año " + anno;
+            dataGridViewCalendarioReservas.DataSource = calendario;         
         }
 
-        protected void actualizaMes(int dias)
+        protected String nombreMes(int _mes)
         {
-            calendario.Columns.Add("Habitaciones", typeof(int));//Carlos idea
-            for(int i = 0; i<dias; i++)
+            switch(_mes)
             {
-                calendario.Columns.Add((i+1).ToString());
+                case 1: return "Enero";
+                    break;
+                case 2:
+                    return "Febrero";
+                    break;
+                case 3:
+                    return "Marzo";
+                    break;
+                case 4:
+                    return "Abril";
+                    break;
+                case 5:
+                    return "Mayo";
+                    break;
+                case 6:
+                    return "Junio";
+                    break;
+                case 7:
+                    return "Julio";
+                    break;
+                case 8:
+                    return "Agosto";
+                    break;
+                case 9:
+                    return "Septiembre";
+                    break;
+                case 10:
+                    return "Octubre";
+                    break;
+                case 11:
+                    return "Noviembre";
+                    break;
+                case 12:
+                    return "Diciembre";
+                    break;
+                default: return "Otro mes";
+                    break;
             }
+        }
+
+        protected void actualizaDias(int dias)
+        {
+            for(int i = 0; i < dias; i++)
+            {
+                if(calendario.Columns.Count-1<dias)
+                {
+                    calendario.Columns.Add((calendario.Columns.Count).ToString());
+                }
+                else if(calendario.Columns.Count - 1 > dias)
+                {
+                    calendario.Columns.RemoveAt(calendario.Columns.Count-1);
+                }
+            }
+            labelMesAnno.Text = nombreMes(mes) + " - " + anno;
         }
 
         protected void actualizaHabitaciones(DataTable _habitaciones)
@@ -71,9 +125,37 @@ namespace ReservasHotel
             buscarReserva.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender,EventArgs e)
         {
-            //label1.Text = "Mes "+ mes +" - Año "+ anno;
+           
+        }
+
+        private void buttonAnteriorMes_Click(object sender,EventArgs e)
+        {
+            if(mes > 1)
+            {
+                mes = mes - 1;
+            }
+            else
+            {
+                mes = 12;
+                anno = anno - 1;
+            }
+            actualizaDias(System.DateTime.DaysInMonth(anno,mes));
+        }
+
+        private void buttonSiguienteMes_Click(object sender,EventArgs e)
+        {
+            if(mes < 12)
+            {
+                mes = mes + 1;
+            }
+            else
+            {
+                mes = 1;
+                anno = anno + 1;
+            }
+            actualizaDias(System.DateTime.DaysInMonth(anno,mes));
         }
     }
 }

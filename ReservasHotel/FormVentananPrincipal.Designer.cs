@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVentananPrincipal));
             this.dataGridViewCalendarioReservas = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonSiguienteMes = new System.Windows.Forms.Button();
+            this.buttonAnteriorMes = new System.Windows.Forms.Button();
+            this.labelMesAnno = new System.Windows.Forms.Label();
+            this.buttonNuevaReserva = new System.Windows.Forms.Button();
+            this.buttonBuscarReserva = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendarioReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,65 +52,66 @@
             this.dataGridViewCalendarioReservas.Size = new System.Drawing.Size(549, 426);
             this.dataGridViewCalendarioReservas.TabIndex = 0;
             // 
-            // button1
+            // buttonSiguienteMes
             // 
-            this.button1.Location = new System.Drawing.Point(769, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 426);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "→";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSiguienteMes.Location = new System.Drawing.Point(769, 51);
+            this.buttonSiguienteMes.Name = "buttonSiguienteMes";
+            this.buttonSiguienteMes.Size = new System.Drawing.Size(75, 426);
+            this.buttonSiguienteMes.TabIndex = 1;
+            this.buttonSiguienteMes.Text = "→";
+            this.buttonSiguienteMes.UseVisualStyleBackColor = true;
+            this.buttonSiguienteMes.Click += new System.EventHandler(this.buttonSiguienteMes_Click);
             // 
-            // button2
+            // buttonAnteriorMes
             // 
-            this.button2.Location = new System.Drawing.Point(133, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 426);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "←";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonAnteriorMes.Location = new System.Drawing.Point(133, 51);
+            this.buttonAnteriorMes.Name = "buttonAnteriorMes";
+            this.buttonAnteriorMes.Size = new System.Drawing.Size(75, 426);
+            this.buttonAnteriorMes.TabIndex = 2;
+            this.buttonAnteriorMes.Text = "←";
+            this.buttonAnteriorMes.UseVisualStyleBackColor = true;
+            this.buttonAnteriorMes.Click += new System.EventHandler(this.buttonAnteriorMes_Click);
             // 
-            // label1
+            // labelMesAnno
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(133, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(711, 30);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMesAnno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMesAnno.Location = new System.Drawing.Point(133, 18);
+            this.labelMesAnno.Name = "labelMesAnno";
+            this.labelMesAnno.Size = new System.Drawing.Size(711, 30);
+            this.labelMesAnno.TabIndex = 3;
+            this.labelMesAnno.Text = "label1";
+            this.labelMesAnno.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button3
+            // buttonNuevaReserva
             // 
-            this.button3.Location = new System.Drawing.Point(13, 14);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 31);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Nueva Reserva";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonNuevaReserva.Location = new System.Drawing.Point(13, 14);
+            this.buttonNuevaReserva.Name = "buttonNuevaReserva";
+            this.buttonNuevaReserva.Size = new System.Drawing.Size(115, 31);
+            this.buttonNuevaReserva.TabIndex = 4;
+            this.buttonNuevaReserva.Text = "Nueva Reserva";
+            this.buttonNuevaReserva.UseVisualStyleBackColor = true;
+            this.buttonNuevaReserva.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // buttonBuscarReserva
             // 
-            this.button4.Location = new System.Drawing.Point(12, 51);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 31);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Buscar Reserva";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonBuscarReserva.Location = new System.Drawing.Point(12, 51);
+            this.buttonBuscarReserva.Name = "buttonBuscarReserva";
+            this.buttonBuscarReserva.Size = new System.Drawing.Size(115, 31);
+            this.buttonBuscarReserva.TabIndex = 5;
+            this.buttonBuscarReserva.Text = "Buscar Reserva";
+            this.buttonBuscarReserva.UseVisualStyleBackColor = true;
+            this.buttonBuscarReserva.Click += new System.EventHandler(this.button4_Click);
             // 
             // FormVentananPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 494);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonBuscarReserva);
+            this.Controls.Add(this.buttonNuevaReserva);
+            this.Controls.Add(this.labelMesAnno);
+            this.Controls.Add(this.buttonAnteriorMes);
+            this.Controls.Add(this.buttonSiguienteMes);
             this.Controls.Add(this.dataGridViewCalendarioReservas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -125,10 +126,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewCalendarioReservas;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonSiguienteMes;
+        private System.Windows.Forms.Button buttonAnteriorMes;
+        private System.Windows.Forms.Label labelMesAnno;
+        private System.Windows.Forms.Button buttonNuevaReserva;
+        private System.Windows.Forms.Button buttonBuscarReserva;
     }
 }
