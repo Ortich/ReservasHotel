@@ -35,14 +35,64 @@ namespace ReservasHotel
             actualizaHabitaciones(habitaciones);
             labelMesAnno.Text = nombreMes(mes) + " - " + anno;
 
-            dataGridViewCalendarioReservas.DataSource = calendario;         
+            dataGridViewCalendarioReservas.DataSource = calendario;
+            limpiaReservas();
+            actualizaReservas();
+        }
+
+        protected void actualizaReservas()
+        {
+            try
+            {
+                for(int i = 0; i < reservas.Rows.Count; i++)
+                {
+                    String nHab = Convert.ToString((int)reservas.Rows[i]["nHabitacionS"]);
+                    int aux = 0;
+                    Boolean encontrado = false;
+                    for(int j = 0; j < reservas.Rows.Count && !encontrado; j++)
+                    {
+                        if(calendario.Rows[j][0].ToString() == nHab)
+                        {
+                            aux = j;
+                            encontrado = true;
+                        }
+                    }
+                    DateTime fechaEntrada = (DateTime)reservas.Rows[i]["fecha_entrada"];
+                    DateTime fechaSalida = (DateTime)reservas.Rows[i]["fecha_salida"];
+                    //De momento solo comprueba el mes y año de entrada, si una reserva pasa de un mes a otro, solo
+                    //cuenta el primero
+                    if(fechaEntrada.Month == mes && fechaEntrada.Year == anno)
+                    {
+                        for(int k = fechaEntrada.Day; k <= fechaSalida.Day; k++)
+                        {
+                            calendario.Rows[aux][k] = "X";
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("No se han podido cargar las reservas");
+            }
+        }
+
+        protected void limpiaReservas()
+        {
+            for(int i = 0; i < calendario.Rows.Count; i++)
+            {
+                for(int j= 1; j<calendario.Columns.Count;j++)
+                {
+                    calendario.Rows[i][j] = "";
+                }
+            }
         }
 
         protected String nombreMes(int _mes)
         {
             switch(_mes)
             {
-                case 1: return "Enero";
+                case 1:
+                    return "Enero";
                     break;
                 case 2:
                     return "Febrero";
@@ -77,7 +127,8 @@ namespace ReservasHotel
                 case 12:
                     return "Diciembre";
                     break;
-                default: return "Otro mes";
+                default:
+                    return "Otro mes";
                     break;
             }
         }
@@ -86,13 +137,13 @@ namespace ReservasHotel
         {
             for(int i = 0; i < dias; i++)
             {
-                if(calendario.Columns.Count-1<dias)
+                if(calendario.Columns.Count - 1 < dias)
                 {
                     calendario.Columns.Add((calendario.Columns.Count).ToString());
                 }
                 else if(calendario.Columns.Count - 1 > dias)
                 {
-                    calendario.Columns.RemoveAt(calendario.Columns.Count-1);
+                    calendario.Columns.RemoveAt(calendario.Columns.Count - 1);
                 }
             }
             labelMesAnno.Text = nombreMes(mes) + " - " + anno;
@@ -127,7 +178,7 @@ namespace ReservasHotel
 
         private void button1_Click(object sender,EventArgs e)
         {
-           
+
         }
 
         private void buttonAnteriorMes_Click(object sender,EventArgs e)
@@ -142,6 +193,8 @@ namespace ReservasHotel
                 anno = anno - 1;
             }
             actualizaDias(System.DateTime.DaysInMonth(anno,mes));
+            limpiaReservas();
+            actualizaReservas();
         }
 
         private void buttonSiguienteMes_Click(object sender,EventArgs e)
@@ -156,6 +209,8 @@ namespace ReservasHotel
                 anno = anno + 1;
             }
             actualizaDias(System.DateTime.DaysInMonth(anno,mes));
+            limpiaReservas();
+            actualizaReservas();
         }
     }
 }
