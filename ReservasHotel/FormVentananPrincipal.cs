@@ -63,9 +63,32 @@ namespace ReservasHotel
                     //cuenta el primero
                     if(fechaEntrada.Month == mes && fechaEntrada.Year == anno)
                     {
-                        for(int k = fechaEntrada.Day; k <= fechaSalida.Day; k++)
+                        if(fechaSalida.Month == mes)
+                        {
+                            for(int k = fechaEntrada.Day; k <= fechaSalida.Day; k++)
+                            {
+                                calendario.Rows[aux][k] = "X";
+                                dataGridViewCalendarioReservas.Rows[aux].Cells[k].Style.BackColor = Color.Red;
+
+                            }
+                        }
+                        else
+                        {
+                            for(int k = fechaEntrada.Day; k <= System.DateTime.DaysInMonth(fechaEntrada.Year,fechaEntrada.Month); k++)
+                            {
+                                calendario.Rows[aux][k] = "X";
+                                dataGridViewCalendarioReservas.Rows[aux].Cells[k].Style.BackColor = Color.Red;
+
+                            }
+                        }
+                    }
+                    else if(fechaSalida.Month == mes && fechaSalida.Year == anno)
+                    {
+                        for(int k = 1; k <= fechaSalida.Day; k++)
                         {
                             calendario.Rows[aux][k] = "X";
+                            dataGridViewCalendarioReservas.Rows[aux].Cells[k].Style.BackColor = Color.Red;
+
                         }
                     }
                 }
@@ -80,9 +103,10 @@ namespace ReservasHotel
         {
             for(int i = 0; i < calendario.Rows.Count; i++)
             {
-                for(int j= 1; j<calendario.Columns.Count;j++)
+                for(int j = 1; j < calendario.Columns.Count; j++)
                 {
                     calendario.Rows[i][j] = "";
+                    dataGridViewCalendarioReservas.Rows[i].Cells[j].Style.BackColor = Color.White;
                 }
             }
         }
