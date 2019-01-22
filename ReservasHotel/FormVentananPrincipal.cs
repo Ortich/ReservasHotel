@@ -37,7 +37,6 @@ namespace ReservasHotel
 
             dataGridViewCalendarioReservas.DataSource = calendario;
             limpiaReservas();
-            actualizaReservas();
         }
 
         protected void actualizaReservas()
@@ -49,7 +48,7 @@ namespace ReservasHotel
                     String nHab = Convert.ToString((int)reservas.Rows[i]["nHabitacionS"]);
                     int aux = 0;
                     Boolean encontrado = false;
-                    for(int j = 0; j < reservas.Rows.Count && !encontrado; j++)
+                    for(int j = 0; j < calendario.Rows.Count && !encontrado; j++)
                     {
                         if(calendario.Rows[j][0].ToString() == nHab)
                         {
@@ -59,8 +58,6 @@ namespace ReservasHotel
                     }
                     DateTime fechaEntrada = (DateTime)reservas.Rows[i]["fecha_entrada"];
                     DateTime fechaSalida = (DateTime)reservas.Rows[i]["fecha_salida"];
-                    //De momento solo comprueba el mes y año de entrada, si una reserva pasa de un mes a otro, solo
-                    //cuenta el primero
                     if(fechaEntrada.Month == mes && fechaEntrada.Year == anno)
                     {
                         if(fechaSalida.Month == mes)
@@ -234,6 +231,11 @@ namespace ReservasHotel
             }
             actualizaDias(System.DateTime.DaysInMonth(anno,mes));
             limpiaReservas();
+            actualizaReservas();
+        }
+
+        private void carga(object sender,EventArgs e)
+        {
             actualizaReservas();
         }
     }

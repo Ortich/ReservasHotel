@@ -72,6 +72,12 @@
     <Compile Include="FormNuevaReserva.Designer.cs">
       <DependentUpon>FormNuevaReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPagarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPagarReserva.Designer.cs">
+      <DependentUpon>FormPagarReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVentananPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
