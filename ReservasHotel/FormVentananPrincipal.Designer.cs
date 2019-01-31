@@ -50,6 +50,7 @@
             this.dataGridViewCalendarioReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCalendarioReservas.Location = new System.Drawing.Point(214, 51);
             this.dataGridViewCalendarioReservas.Name = "dataGridViewCalendarioReservas";
+            this.dataGridViewCalendarioReservas.RowHeadersWidth = 20;
             this.dataGridViewCalendarioReservas.Size = new System.Drawing.Size(549, 426);
             this.dataGridViewCalendarioReservas.TabIndex = 0;
             // 
