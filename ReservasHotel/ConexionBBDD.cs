@@ -87,5 +87,80 @@ namespace ReservasHotel
                 throw e;
             }
         }
+
+        public String[] getHabitaciones2LaVenganza()
+        {
+            try
+            {
+                conexion.Open();
+                Console.WriteLine("Conexion Abierta -------------------------------------------");
+                MySqlCommand consulta = new MySqlCommand("SELECT nhabitacion FROM habitaciones", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable aux = new DataTable();
+                aux.Load(resultado);
+                conexion.Close();
+                Console.WriteLine("Conexion Cerrada -------------------------------------------");
+                String[] habitaciones = new String[aux.Rows.Count];
+                for (int i = 0; i < aux.Rows.Count; i++)
+                {
+                    habitaciones[i] = aux.Rows[i][0].ToString(); 
+                }
+                return habitaciones;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public String[] getCamas(String numeroHabitacion)
+        {
+            try
+            {
+                conexion.Open();
+                Console.WriteLine("Conexion Abierta -------------------------------------------");
+                MySqlCommand consulta = new MySqlCommand("SELECT nCamas, nCamasSupletoras,nCamasMatrimonio from habitaciones WHERE nHabitacion = " + numeroHabitacion + ";", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable aux = new DataTable();
+                aux.Load(resultado);
+                conexion.Close();
+                Console.WriteLine("Conexion Cerrada -------------------------------------------");
+                String[] habitaciones = new String[aux.Rows[0].ItemArray.Length];
+                for (int i = 0; i < aux.Rows[0].ItemArray.Length; i++)
+                {
+                    habitaciones[i] = aux.Rows[0][i].ToString();
+                }
+                return habitaciones;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public String[] getCancer(String numeroHabitacion)
+        {
+            try
+            {
+                conexion.Open();
+                Console.WriteLine("Conexion Abierta -------------------------------------------");
+                MySqlCommand consulta = new MySqlCommand("SELECT nCamas, nCamasSupletoras,nCamasMatrimonio from habitaciones WHERE nHabitacion = " + numeroHabitacion + ";", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable aux = new DataTable();
+                aux.Load(resultado);
+                conexion.Close();
+                Console.WriteLine("Conexion Cerrada -------------------------------------------");
+                String[] habitaciones = new String[aux.Rows[0].ItemArray.Length];
+                for (int i = 0; i < aux.Rows[0].ItemArray.Length; i++)
+                {
+                    habitaciones[i] = aux.Rows[0][i].ToString();
+                }
+                return habitaciones;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
     }
 }

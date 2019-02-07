@@ -117,6 +117,7 @@
             this.comboBoxHabitaciones.Name = "comboBoxHabitaciones";
             this.comboBoxHabitaciones.Size = new System.Drawing.Size(79, 21);
             this.comboBoxHabitaciones.TabIndex = 7;
+            this.comboBoxHabitaciones.SelectedIndexChanged += new System.EventHandler(this.comboBoxHabitaciones_SelectedIndexChanged);
             // 
             // textBoxNumeroPersonas
             // 
@@ -198,7 +199,7 @@
             // labelTCamasIndividuales
             // 
             this.labelTCamasIndividuales.AutoSize = true;
-            this.labelTCamasIndividuales.Location = new System.Drawing.Point(0, 0);
+            this.labelTCamasIndividuales.Location = new System.Drawing.Point(12, 52);
             this.labelTCamasIndividuales.Name = "labelTCamasIndividuales";
             this.labelTCamasIndividuales.Size = new System.Drawing.Size(98, 13);
             this.labelTCamasIndividuales.TabIndex = 16;
@@ -352,7 +353,6 @@
         private System.Windows.Forms.Label labelTCamasSupletorias;
         private System.Windows.Forms.Label labelCamasSupletorias;
         private System.Windows.Forms.Label labeTCamasMatrimonio;
-        private System.Windows.Forms.Label labelCamasIndividuales;
         private System.Windows.Forms.Label labelCamasMatrimonio;
         private System.Windows.Forms.Label labelTCamasIndividuales;
         private System.Windows.Forms.Label labelFechaEntrada;
@@ -367,5 +367,6 @@
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxTelefono;
+        public System.Windows.Forms.Label labelCamasIndividuales;
     }
 }
