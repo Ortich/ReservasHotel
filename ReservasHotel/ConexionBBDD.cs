@@ -138,24 +138,57 @@ namespace ReservasHotel
             }
         }
 
-        public String[] getCancer(String numeroHabitacion)
+        public bool getDisponible(String numeroHabitacion, String fechaEntrada, String fechaSalida)
         {
             try
             {
                 conexion.Open();
                 Console.WriteLine("Conexion Abierta -------------------------------------------");
-                MySqlCommand consulta = new MySqlCommand("SELECT nCamas, nCamasSupletoras,nCamasMatrimonio from habitaciones WHERE nHabitacion = " + numeroHabitacion + ";", conexion);
+                MySqlCommand consulta = new MySqlCommand("SELECT fecha_entrada, fecha_salida FROM reserva WHERE nHabitacionS = '" + numeroHabitacion + "' " +
+                    "AND fecha_entrada >='" + fechaEntrada + "' AND fecha_salida >='" + fechaEntrada + "' AND fecha_entrada <='" + fechaSalida + "' AND fecha_salida <='" + fechaSalida + "';", conexion);
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 DataTable aux = new DataTable();
                 aux.Load(resultado);
                 conexion.Close();
                 Console.WriteLine("Conexion Cerrada -------------------------------------------");
-                String[] habitaciones = new String[aux.Rows[0].ItemArray.Length];
-                for (int i = 0; i < aux.Rows[0].ItemArray.Length; i++)
+                return aux.Rows.Count == 0;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
+        public void setNuevaReserva(String dniCliente, String nombreCliente, String apellidoCliente, String emailCliente, String tlfnCliente, 
+            String numeroHabitacion, String fechaEntrada, String fechaSalida)
+        {
+            try
+            {
+                //Hay que hacer una mierda para la idReserva
+                conexion.Open();
+                Console.WriteLine("Conexion Abierta -------------------------------------------");
+                MySqlCommand consulta = new MySqlCommand("SELECT COUNT(*) FROM cliente WHERE cliente_dni ='" + dniCliente + "';", conexion);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                DataTable aux = new DataTable();
+                aux.Load(resultado);
+                if(Convert.ToInt32(aux.Rows[0][0].ToString()) == 0)
                 {
-                    habitaciones[i] = aux.Rows[0][i].ToString();
+                    //el usuario no existe, se añade
+                    consulta = new MySqlCommand("INSERT INTO `cliente` (`cliente_dni`, `cliente_nombre`, `cliente_apellido`, `cliente_email`, `cliente_tlfn`) VALUES " +
+                        "('" + dniCliente + "', '" + nombreCliente + "', '" + apellidoCliente + "', '" + emailCliente + "', " + tlfnCliente + ");", conexion);
+                    resultado = consulta.ExecuteReader();
+                    
                 }
-                return habitaciones;
+                //añadir reserva
+                conexion.Close();
+                conexion.Open();
+                consulta = new MySqlCommand("INSERT INTO `reserva` (`fecha_entrada`, `fecha_salida`, `dni_clienteS`, `nHabitacionS`) VALUES " +
+                    "('" + fechaEntrada +"', '" + fechaSalida + "', '" + dniCliente + "', " + numeroHabitacion + ");", conexion);
+                resultado = consulta.ExecuteReader();
+
+                conexion.Close();
+                Console.WriteLine("Conexion Cerrada -------------------------------------------");
+                
             }
             catch (MySqlException e)
             {
