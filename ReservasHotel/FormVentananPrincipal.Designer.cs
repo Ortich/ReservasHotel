@@ -34,8 +34,6 @@
             this.buttonAnteriorMes = new System.Windows.Forms.Button();
             this.labelMesAnno = new System.Windows.Forms.Label();
             this.buttonNuevaReserva = new System.Windows.Forms.Button();
-            this.buttonBuscarReserva = new System.Windows.Forms.Button();
-            this.buttonPagarReserva = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendarioReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +84,7 @@
             // 
             // buttonNuevaReserva
             // 
-            this.buttonNuevaReserva.Location = new System.Drawing.Point(13, 14);
+            this.buttonNuevaReserva.Location = new System.Drawing.Point(12, 18);
             this.buttonNuevaReserva.Name = "buttonNuevaReserva";
             this.buttonNuevaReserva.Size = new System.Drawing.Size(115, 31);
             this.buttonNuevaReserva.TabIndex = 4;
@@ -94,32 +92,11 @@
             this.buttonNuevaReserva.UseVisualStyleBackColor = true;
             this.buttonNuevaReserva.Click += new System.EventHandler(this.button3_Click);
             // 
-            // buttonBuscarReserva
-            // 
-            this.buttonBuscarReserva.Location = new System.Drawing.Point(12, 51);
-            this.buttonBuscarReserva.Name = "buttonBuscarReserva";
-            this.buttonBuscarReserva.Size = new System.Drawing.Size(115, 31);
-            this.buttonBuscarReserva.TabIndex = 5;
-            this.buttonBuscarReserva.Text = "Buscar Reserva";
-            this.buttonBuscarReserva.UseVisualStyleBackColor = true;
-            this.buttonBuscarReserva.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // buttonPagarReserva
-            // 
-            this.buttonPagarReserva.Location = new System.Drawing.Point(12, 88);
-            this.buttonPagarReserva.Name = "buttonPagarReserva";
-            this.buttonPagarReserva.Size = new System.Drawing.Size(115, 31);
-            this.buttonPagarReserva.TabIndex = 6;
-            this.buttonPagarReserva.Text = "Pagar Reserva";
-            this.buttonPagarReserva.UseVisualStyleBackColor = true;
-            // 
             // FormVentananPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 494);
-            this.Controls.Add(this.buttonPagarReserva);
-            this.Controls.Add(this.buttonBuscarReserva);
             this.Controls.Add(this.buttonNuevaReserva);
             this.Controls.Add(this.labelMesAnno);
             this.Controls.Add(this.buttonAnteriorMes);
@@ -143,7 +120,5 @@
         private System.Windows.Forms.Button buttonAnteriorMes;
         private System.Windows.Forms.Label labelMesAnno;
         private System.Windows.Forms.Button buttonNuevaReserva;
-        private System.Windows.Forms.Button buttonBuscarReserva;
-        private System.Windows.Forms.Button buttonPagarReserva;
     }
 }

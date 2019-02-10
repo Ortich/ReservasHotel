@@ -39,7 +39,7 @@ namespace ReservasHotel
             limpiaReservas();
         }
 
-        protected void actualizaReservas()
+        public void actualizaReservas()
         {
             try
             {
