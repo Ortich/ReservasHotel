@@ -34,6 +34,7 @@
             this.buttonAnteriorMes = new System.Windows.Forms.Button();
             this.labelMesAnno = new System.Windows.Forms.Label();
             this.buttonNuevaReserva = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendarioReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +93,20 @@
             this.buttonNuevaReserva.UseVisualStyleBackColor = true;
             this.buttonNuevaReserva.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label1
+            // 
+            this.label1.Image = global::ReservasHotel.Properties.Resources.icono2;
+            this.label1.Location = new System.Drawing.Point(9, 377);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 100);
+            this.label1.TabIndex = 5;
+            // 
             // FormVentananPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 494);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonNuevaReserva);
             this.Controls.Add(this.labelMesAnno);
             this.Controls.Add(this.buttonAnteriorMes);
@@ -120,5 +130,6 @@
         private System.Windows.Forms.Button buttonAnteriorMes;
         private System.Windows.Forms.Label labelMesAnno;
         private System.Windows.Forms.Button buttonNuevaReserva;
+        private System.Windows.Forms.Label label1;
     }
 }

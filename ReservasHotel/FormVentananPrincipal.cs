@@ -24,7 +24,7 @@ namespace ReservasHotel
         {
             InitializeComponent();
 
-            reservas = miConexion.getReservas();
+            actualizaDatosReservas();
             habitaciones = miConexion.getHabitaciones();
 
             anno = fechaActual.Year;
@@ -37,6 +37,11 @@ namespace ReservasHotel
 
             dataGridViewCalendarioReservas.DataSource = calendario;
             limpiaReservas();
+        }
+
+        public void actualizaDatosReservas()
+        {
+            reservas = miConexion.getReservas();
         }
 
         public void actualizaReservas()
@@ -187,7 +192,7 @@ namespace ReservasHotel
 
         private void button3_Click(object sender,EventArgs e)
         {
-            FormNuevaReserva nuevaReserva = new FormNuevaReserva();
+            FormNuevaReserva nuevaReserva = new FormNuevaReserva(this);
             nuevaReserva.Show();
         }
 

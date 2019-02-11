@@ -13,9 +13,10 @@ namespace ReservasHotel
     public partial class FormNuevaReserva : Form
     {
         ConexionBBDD miConexion = new ConexionBBDD();
-        FormVentananPrincipal ventana = new FormVentananPrincipal();
-        public FormNuevaReserva()
+        FormVentananPrincipal ventana = null;
+        public FormNuevaReserva(FormVentananPrincipal _ventana)
         {
+            ventana = _ventana;
             InitializeComponent();
             String [] aux = miConexion.getHabitaciones2LaVenganza();
             this.comboBoxHabitaciones.Items.AddRange(aux);
@@ -48,6 +49,7 @@ namespace ReservasHotel
             {
                 miConexion.setNuevaReserva(textBoxDNI.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxEmail.Text, textBoxTelefono.Text, 
                     comboBoxHabitaciones.SelectedItem.ToString(), entrada, salida);
+                ventana.actualizaDatosReservas();
                 ventana.actualizaReservas();
                 MessageBox.Show("Reserva añadida");
             }
